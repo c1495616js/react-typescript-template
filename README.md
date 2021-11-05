@@ -1,8 +1,8 @@
 # React-Typescript-Template
 
-#### Requirements:
+## Demo
 
-- [Node](https://nodejs.org/en/)
+- [Storybook](https://c1495616js.github.io/react-typescript-template/)
 
 #### Features:
 
@@ -54,10 +54,6 @@ npm run start
 
 Code released under the [MIT License](LICENSE).
 
-## TODO
-
-- Github Action
-
 ## Gotcha
 
 ### Storybook
@@ -75,3 +71,7 @@ module.exports = {
   },
 };
 ```
+
+- Deploy via GA
+
+https://github.com/storybookjs/storybook-deployer
