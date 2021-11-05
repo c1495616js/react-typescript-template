@@ -29,7 +29,7 @@ Run the frontend via either option below, then visit the client at `http://local
 **_NPM:_**
 
 ```
-cp .env.example .env // and add backend url to `REACT_APP_BACKEND_HOST`
+cp .env.example .env // add any env variables here
 npm install
 npm run start
 ```
