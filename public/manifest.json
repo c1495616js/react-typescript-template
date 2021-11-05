@@ -1,6 +1,6 @@
 {
-  "short_name": "VLHub",
-  "name": "VitaminLab Hub",
+  "short_name": "React",
+  "name": "React Typescript Template",
   "icons": [
     {
       "src": "/favicon.ico",
