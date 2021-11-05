@@ -66,7 +66,7 @@ Code released under the [MIT License](LICENSE).
   Refering to this [article](https://gist.github.com/shilman/8856ea1786dcd247139b47b270912324)
 
 ```
-npm i -D @storybook/builder-webpack5@next @storybook/manager-webpack5@next
+npm i -D @storybook/builder-webpack5@latest @storybook/manager-webpack5@latest
 
 // under main.js
 module.exports = {
