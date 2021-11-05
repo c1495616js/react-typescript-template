@@ -1,5 +1,9 @@
 # React-Typescript-Template
 
+## Description
+
+- custom `webpack`, no more blackbox.
+
 ## Demo
 
 - [Storybook](https://c1495616js.github.io/react-typescript-template/)
@@ -14,7 +18,7 @@
 - 🖊 Add SVGs, images, and custom fonts
 - 🌎 Path aliasing for streamlined imports
 - 🌈 Prettier for consistent code style
-- 👀 Lint your code with ESLint & StyleLint
+- 👀 Lint your code with ESLint
 - 🐺 Husky + lint-staged for code quality assurance
 - 🧪 Jest + React Testing Library for tests
 
@@ -45,14 +49,6 @@ npm run start
 | npm run test        | Runs the suite of Jest tests                                  |
 | npm run test:watch  | Runs and Watches the suite of Jest tests                      |
 | npm run lint        | Runs Prettier, ESLint, and StyleLint formatters               |
-
-## 🚀 Deployment
-
-[Instructions here](DEPLOYMENT.md).
-
-## ⚖️ License
-
-Code released under the [MIT License](LICENSE).
 
 ## Gotcha
 
