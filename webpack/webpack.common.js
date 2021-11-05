@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
 
+// handle .env
 const paths = require('./paths')
 const getClientEnvironment = require('./env')
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1))
@@ -70,7 +71,7 @@ module.exports = {
       filename: 'index.html',
       favicon: path.resolve(__dirname, '..', './public/favicon.ico'),
     }),
-    new webpack.DefinePlugin(env.stringified),
+    new webpack.DefinePlugin(env.stringified), // setup env variables
     new webpack.ProvidePlugin({
       process: 'process/browser',
     }),

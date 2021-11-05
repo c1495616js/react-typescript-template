@@ -3,6 +3,12 @@
 ## Description
 
 - custom `webpack`, no more blackbox.
+- custom `eslint-plugin-jerry`
+- path alias
+  | alias | real path |
+  | ------------------- | ------------------------------------------------------------- |
+  | @ | <rootDir>/src/ |
+  | test-utils | <rootDir>/utils/test-utils |
 
 ## Demo
 
