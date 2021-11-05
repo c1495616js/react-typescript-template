@@ -5,11 +5,14 @@
 - custom `webpack`, no more blackbox.
 - custom `eslint-plugin-jerry`
 - path alias
+
   | alias | real path |
   | ------------------- | ------------------------------------------------------------- |
   | @ | <rootDir>/src/ |
   | test-utils | <rootDir>/utils/test-utils |
 
+- Support `tailwindcss` with `jit` mode
+  
 ## Demo
 
 - [Storybook](https://c1495616js.github.io/react-typescript-template/)
