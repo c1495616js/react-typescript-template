@@ -53,3 +53,25 @@ npm run start
 ## ⚖️ License
 
 Code released under the [MIT License](LICENSE).
+
+## TODO
+
+- Github Action
+
+## Gotcha
+
+### Storybook
+
+- webpack 5 has some issue when simply using `npx sb init`.
+  Refering to this [article](https://gist.github.com/shilman/8856ea1786dcd247139b47b270912324)
+
+```
+npm i -D @storybook/builder-webpack5@next @storybook/manager-webpack5@next
+
+// under main.js
+module.exports = {
+  core: {
+    builder: "webpack5",
+  },
+};
+```
