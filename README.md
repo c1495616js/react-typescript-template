@@ -6,13 +6,13 @@
 - custom `eslint-plugin-jerry`
 - path alias
 
-  | alias | real path |
-  | ------------------- | ------------------------------------------------------------- |
-  | @ | <rootDir>/src/ |
+  | alias      | real path                  |
+  | ---------- | -------------------------- |
+  | @          | <rootDir>/src/             |
   | test-utils | <rootDir>/utils/test-utils |
 
 - Support `tailwindcss` with `jit` mode
-  
+
 ## Demo
 
 - [Storybook](https://c1495616js.github.io/react-typescript-template/)
@@ -58,6 +58,12 @@ npm run start
 | npm run test        | Runs the suite of Jest tests                                  |
 | npm run test:watch  | Runs and Watches the suite of Jest tests                      |
 | npm run lint        | Runs Prettier, ESLint, and StyleLint formatters               |
+
+## Design System
+
+- colors:
+  Making the change in the `tailwind.config.js`
+  https://daisyui.com/core/colors
 
 ## Gotcha
 
