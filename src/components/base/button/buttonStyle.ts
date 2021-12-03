@@ -8,7 +8,8 @@
 export const ButtonVariant = {
   contained: '',
   outlined: 'btn-outline',
-  text: 'text',
+  ghost: 'btn-ghost',
+  link: 'btn-link',
 };
 
 export const ButtonColor = {
@@ -16,8 +17,6 @@ export const ButtonColor = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   accent: 'btn-accent',
-  ghost: 'btn-ghost',
-  link: 'btn-link',
 };
 
 export const ButtonCase = {
