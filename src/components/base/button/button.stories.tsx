@@ -18,7 +18,7 @@ Playground.args = {
   color: 'primary',
   buttonSize: 'md',
   textCase: 'uppercase',
-  state: 'none',
   disabled: false,
+  active: false,
   loading: false,
 };

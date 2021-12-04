@@ -5,7 +5,7 @@ export default function App(): JSX.Element {
   return (
     <React.StrictMode>
       <div className="flex justify-center items-center bg-gray-100 h-screen">
-        <Button loading color="primary" buttonSize="lg" state="info">
+        <Button loading color="primary" buttonSize="lg">
           Hello
           <svg
             xmlns="http://www.w3.org/2000/svg"

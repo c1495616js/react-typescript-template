@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
+import cn from 'classnames';
+
 import {
   ButtonVariant,
   ButtonColor,
   ButtonCase,
   ButtonSize,
-  ButtonState,
 } from './buttonStyle';
 
 export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
@@ -12,7 +13,7 @@ export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   color?: keyof typeof ButtonColor;
   textCase?: keyof typeof ButtonCase;
   buttonSize?: keyof typeof ButtonSize;
-  state?: keyof typeof ButtonState;
+  active?: boolean;
   loading?: boolean;
 }
 
@@ -21,26 +22,26 @@ const Button: FC<ButtonProps> = ({
   color = 'neutral',
   textCase = 'capitalize',
   buttonSize = 'md',
-  state = 'none',
+  active = false,
   loading = false,
   children,
   ...props
-}) => (
-  <button
-    {...props}
-    type="button"
-    className={`
-        btn 
-        ${ButtonVariant[variant]} 
-        ${ButtonColor[color]} 
-        ${ButtonCase[textCase]} 
-        ${ButtonSize[buttonSize]}
-        ${ButtonState[state]}
-        ${loading && 'loading'}
-    `}
-  >
-    {children}
-  </button>
-);
+}) => {
+  const className = cn(
+    'btn',
+    ButtonVariant[variant],
+    ButtonColor[color],
+    ButtonCase[textCase],
+    ButtonSize[buttonSize],
+    { 'btn-active': active },
+    { loading }
+  );
+
+  return (
+    <button {...props} type="button" className={className}>
+      {children}
+    </button>
+  );
+};
 
 export default Button;

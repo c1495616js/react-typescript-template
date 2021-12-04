@@ -17,11 +17,15 @@ export const ButtonColor = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   accent: 'btn-accent',
+  info: 'btn-info',
+  warning: 'btn-warning',
+  success: 'btn-success',
+  error: 'btn-error',
 };
 
 export const ButtonCase = {
   uppercase: '',
-  lowercase: 'lowervcase',
+  lowercase: 'lowercase',
   capitalize: 'capitalize',
   normal: 'normal-case',
 };
@@ -31,12 +35,4 @@ export const ButtonSize = {
   sm: 'btn-sm',
   md: 'btn-md', // default
   lg: 'btn-lg',
-};
-
-export const ButtonState = {
-  none: '', // default
-  info: 'btn-info',
-  warning: 'btn-warning',
-  success: 'btn-success',
-  error: 'btn-error',
 };

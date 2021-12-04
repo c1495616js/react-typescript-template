@@ -1,7 +1,5 @@
 module.exports = {
-  extends: "jerry",
-  rules: {
-    // your overrides
-  },
-}
-  
+  extends: ["jerry", "plugin:storybook/recommended"],
+  rules: {// your overrides
+  }
+};
