@@ -65,6 +65,9 @@ npm run start
   Making the change in the `tailwind.config.js`
   https://daisyui.com/core/colors
 
+- icon:
+  https://heroicons.com/
+
 ## Gotcha
 
 ### Storybook
