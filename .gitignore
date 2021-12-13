@@ -1,3 +1,8 @@
 build/
 node_modules
 .env
+
+## cypress
+coverage
+cypress/videos
+cypress/screenshots
