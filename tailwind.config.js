@@ -24,9 +24,9 @@ const colors = {
 };
 
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  safelist: [], // once add color, sometimes need to add to here, in order not to be purged
   mode: 'jit',
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors,
