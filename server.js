@@ -1,8 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const express = require('express');
+const expressStaticGzip = require('express-static-gzip');
 
 const app = express();
+
+/** middleware */
+app.use(
+  expressStaticGzip(path.join(__dirname, 'build'), {
+    enableBrotli: true, // only if you have brotli files too
+  })
+);
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.set('port', process.env.PORT || 8080);
