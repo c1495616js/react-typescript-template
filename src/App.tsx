@@ -12,7 +12,12 @@ export default function App(): JSX.Element {
         <title>React Typescript Template</title>
       </Helmet>
       <figure className="h-screen flex items-center">
-        <img src="https://picsum.photos/id/1005/400/250" alt="" />
+        <img
+          src="https://picsum.photos/id/1005/400/250"
+          width="400"
+          height="250"
+          alt=""
+        />
       </figure>
       <div className="card-body justify-center">
         <h2 className="card-title">React Typescript Template</h2>
