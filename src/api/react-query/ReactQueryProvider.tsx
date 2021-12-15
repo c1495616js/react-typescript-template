@@ -6,7 +6,7 @@ export const queryClient = new QueryClient();
 
 const ReactQueryProvider: FC = ({ children }) => (
   <QueryClientProvider client={queryClient}>
-    <ReactQueryDevtools />
+    {process.env.NODE_ENV !== 'production' && <ReactQueryDevtools />}
     {children}
   </QueryClientProvider>
 );
