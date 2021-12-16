@@ -8,7 +8,7 @@ import {
   ButtonSize,
 } from './buttonStyle';
 
-export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   variant?: keyof typeof ButtonVariant;
   color?: keyof typeof ButtonColor;
   textCase?: keyof typeof ButtonCase;
