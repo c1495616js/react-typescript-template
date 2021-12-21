@@ -13,12 +13,12 @@ module.exports = {
         compress: true,
       },
     }), new CssMinimizerPlugin()],
+    concatenateModules: true,
   },
   cache: {
     type: 'filesystem',
   }, 
   plugins: [
-    new CompressionPlugin(), 
-    new webpack.optimize.ModuleConcatenationPlugin()
+    new CompressionPlugin(),
   ],
 }
