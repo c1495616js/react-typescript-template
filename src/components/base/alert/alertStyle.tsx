@@ -16,7 +16,7 @@ export const AllertIcon = {
       fill="none"
       viewBox="0 0 24 24"
       stroke="#2196f3"
-      className="w-6 h-6 mx-2"
+      className="mx-2 h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -32,7 +32,7 @@ export const AllertIcon = {
       fill="none"
       viewBox="0 0 24 24"
       stroke="#2196f3"
-      className="w-6 h-6 mx-2"
+      className="mx-2 h-6 w-6"
     >
       <path
         strokeLinecap="round"
@@ -47,7 +47,7 @@ export const AllertIcon = {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      className="w-6 h-6 mx-2 stroke-current"
+      className="mx-2 h-6 w-6 stroke-current"
     >
       <path
         strokeLinecap="round"
@@ -62,7 +62,7 @@ export const AllertIcon = {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      className="w-6 h-6 mx-2 stroke-current"
+      className="mx-2 h-6 w-6 stroke-current"
     >
       <path
         strokeLinecap="round"
@@ -77,7 +77,7 @@ export const AllertIcon = {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      className="w-6 h-6 mx-2 stroke-current"
+      className="mx-2 h-6 w-6 stroke-current"
     >
       <path
         strokeLinecap="round"
