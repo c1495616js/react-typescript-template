@@ -32,6 +32,7 @@ module.exports = {
     },
   ],
   mode: 'jit',
+  darkMode: 'class',
   theme: {
     colors: {
       transparent: 'transparent',
