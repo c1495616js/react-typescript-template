@@ -18,11 +18,11 @@ const StoryLayout: React.FC<IStoryArgs> = ({
   children,
   noPadding,
 }) => {
-  const [isDark, setIsDark] = useDarkMode();
+  const [, setIsDark] = useDarkMode();
   useEffect(() => {
     setIsDark(darkMode);
   }, [darkMode, setIsDark]);
-  console.log(isDark, darkMode);
+
   return (
     <div className={cn({ 'dark bg-gray-900': darkMode }, '-m-4')}>
       <div className={cn(className, { 'p-4': !noPadding })}>{children}</div>
