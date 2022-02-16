@@ -1,3 +1,6 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path');
+
 module.exports = {
   core: {
     builder: 'webpack5',
@@ -6,6 +9,8 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    'storybook-addon-designs',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -15,6 +20,16 @@ module.exports = {
       },
     },
   ],
+  webpackFinal: (config) => {
+    config.resolve.plugins = config.resolve.plugins || [];
+    config.resolve.plugins.push(
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, '../tsconfig.json'),
+      })
+    );
+
+    return config;
+  },
   typescript: {
     check: true, // type-check stories during Storybook build
   },
