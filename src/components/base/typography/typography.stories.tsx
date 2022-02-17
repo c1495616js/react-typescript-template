@@ -7,7 +7,7 @@ import StoryLayout from '@/components/layout/stories/StoryLayout';
 import Typography, { TypographyProps } from './Typography';
 
 const meta: Meta = {
-  title: 'Typography',
+  title: 'Base/Typography',
   component: Typography,
   parameters: {
     controls: { expanded: true },

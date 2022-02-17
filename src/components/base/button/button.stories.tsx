@@ -1,24 +1,52 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+
+import { FiStar } from 'react-icons/fi';
+import StoryLayout from '@/components/layout/stories/StoryLayout';
 import Button, { ButtonProps } from './Button';
 
-export default {
+import { Figma } from '@/data';
+
+const meta: Meta = {
   title: 'Base/Button',
   component: Button,
-} as Meta;
+  parameters: {
+    controls: { expanded: true },
+    design: { type: 'figma', url: Figma.Button },
+  },
+};
 
-export const Playground: Story<ButtonProps> = (props) => (
-  <Button {...props}>{props?.variant}</Button>
+export default meta;
+
+interface Props extends ButtonProps {
+  darkMode: boolean;
+}
+
+const StoryButton: Story<Props> = (args) => (
+  <StoryLayout {...args} className="space-y-2">
+    <Button {...args}>Button</Button>
+
+    <Button {...args} LeadingIcon={<FiStar />}>
+      Button
+    </Button>
+
+    <Button {...args} TrailingIcon={<FiStar />}>
+      Button
+    </Button>
+
+    <Button {...args} IconOnly={<FiStar />} />
+  </StoryLayout>
 );
 
-Playground.args = {
-  variant: 'contained',
-  color: 'primary',
-  buttonSize: 'md',
-  textCase: 'uppercase',
+export const Default = StoryButton.bind({});
+
+Default.args = {
+  variant: 'primary',
+  size: 'md',
+  darkMode: false,
   disabled: false,
-  active: false,
-  loading: false,
+};
+
+Default.parameters = {
+  controls: { exclude: ['LeadingIcon', 'TrailingIcon', 'IconOnly'] },
 };
