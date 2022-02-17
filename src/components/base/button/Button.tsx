@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-pascal-case */
 import React, { FC, ButtonHTMLAttributes } from 'react';
@@ -97,9 +98,18 @@ const Button: FC<ButtonProps> = ({
   let disabled = disabledProp;
   if (loading) {
     disabled = true;
+    const Empty = <></>;
+
     if (IconOnly) {
-      // eslint-disable-next-line no-param-reassign
-      IconOnly = <></>;
+      IconOnly = Empty;
+    }
+
+    if (LeadingIcon) {
+      LeadingIcon = Empty;
+    }
+
+    if (TrailingIcon) {
+      TrailingIcon = Empty;
     }
   }
 
