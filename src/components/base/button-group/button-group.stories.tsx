@@ -7,7 +7,7 @@ import { Figma, options1, options2, options3 } from '@/data';
 import { ButtonGroup, ButtonGroupProps } from './ButtonGroup';
 
 const meta: Meta = {
-  title: 'ButtonGroup',
+  title: 'Base/ButtonGroup',
   parameters: {
     controls: { expanded: true },
     design: { type: 'figma', url: Figma.ButtonGroup },

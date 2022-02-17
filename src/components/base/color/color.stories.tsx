@@ -7,7 +7,7 @@ import ColorBox from './ColorBox';
 import { Figma, colors } from '@/data';
 
 const meta: Meta = {
-  title: 'Colors',
+  title: 'Base/Colors',
   parameters: {
     controls: { expanded: true },
     design: { type: 'figma', url: Figma.Colors },
