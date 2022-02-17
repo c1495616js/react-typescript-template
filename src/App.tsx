@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 export default function App(): JSX.Element {
   return (
-    <div className="card bordered sm:card-side h-screen px-8">
+    <div className="card bordered h-screen px-8 sm:card-side">
       <Helmet>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,7 @@ export default function App(): JSX.Element {
         <meta name="description" content="React Website" />
         <title>React Typescript Template</title>
       </Helmet>
-      <figure className="h-screen flex items-center">
+      <figure className="flex h-screen items-center">
         <img
           src="https://picsum.photos/id/1005/400/250"
           width="400"
