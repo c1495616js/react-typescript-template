@@ -45,6 +45,7 @@ Default.args = {
   size: 'md',
   darkMode: false,
   disabled: false,
+  loading: false,
 };
 
 Default.parameters = {

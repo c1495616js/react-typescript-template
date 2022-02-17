@@ -1,6 +1,8 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-pascal-case */
 import React, { FC, ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
+import { FaSpinner } from 'react-icons/fa';
 
 type ButtonVariant =
   | 'primary'
@@ -72,7 +74,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   TrailingIcon?: React.ReactElement;
   IconOnly?: React.ReactElement;
   disabled?: boolean;
+  loading?: boolean;
 }
+
+const Loading: FC<any> = (props) => <FaSpinner {...props} />;
 
 const Button: FC<ButtonProps> = ({
   children,
@@ -82,11 +87,21 @@ const Button: FC<ButtonProps> = ({
   LeadingIcon,
   TrailingIcon,
   IconOnly,
-  disabled,
+  disabled: disabledProp,
+  loading,
   ...buttonProps
 }) => {
   const ButtonVariantClassName = ButtonVariantClasses[variant];
   const ButtonIconSizeClassName = ButtonIconSizeClasses[size];
+
+  let disabled = disabledProp;
+  if (loading) {
+    disabled = true;
+    if (IconOnly) {
+      // eslint-disable-next-line no-param-reassign
+      IconOnly = <></>;
+    }
+  }
 
   const classname = cn('btn-base', className, {
     [ButtonSizeClasses[size]]: !IconOnly,
@@ -101,10 +116,21 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button {...buttonProps} type="button" className={classname}>
+      {loading ? (
+        <Loading
+          className={cn('animate-spin', {
+            'mr-2': size !== '2xl' && !IconOnly,
+            'mr-3': size === '2xl' && !IconOnly,
+          })}
+        />
+      ) : null}
       {LeadingIcon ? (
         <LeadingIcon.type
           {...LeadingIcon.props}
-          className={cn({ 'mr-2': size !== '2xl', 'mr-3': size === '2xl' })}
+          className={cn({
+            'mr-2': size !== '2xl',
+            'mr-3': size === '2xl',
+          })}
         />
       ) : null}
       {children}
