@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
-import { expect, describe, it } from 'vitest';
 
 import { render, screen } from 'test-utils';
 import Button from './Button';
