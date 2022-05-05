@@ -1,9 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import Playground from '@/components/playground';
+
 export default function App(): JSX.Element {
   return (
-    <div className="card bordered h-screen px-8 sm:card-side">
+    <div className="card bordered sm:card-side h-screen px-8">
       <Helmet>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,6 +33,9 @@ export default function App(): JSX.Element {
           </button>
         </div>
       </div>
+      <section>
+        <Playground />
+      </section>
     </div>
   );
 }
