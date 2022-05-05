@@ -86,6 +86,7 @@
     "eslint": "^7.19.0",
     "eslint-config-jerry": "^1.0.10",
     "eslint-plugin-storybook": "^0.5.7",
+    "eslint-plugin-vitest": "0.0.8",
     "happy-dom": "^2.50.0",
     "html-webpack-plugin": "^5.1.0",
     "husky": "4",
