@@ -2,52 +2,33 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { FiStar } from 'react-icons/fi';
-import StoryLayout from '@/components/layout/stories/StoryLayout';
+
 import Button, { ButtonProps } from './Button';
 
 import { Figma } from '@/data';
 
-const meta: Meta = {
+export default {
   title: 'Base/Button',
   component: Button,
   parameters: {
     controls: { expanded: true },
     design: { type: 'figma', url: Figma.Button },
   },
-};
+} as Meta;
 
-export default meta;
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-interface Props extends ButtonProps {
-  darkMode: boolean;
-}
-
-const StoryButton: Story<Props> = (args) => (
-  <StoryLayout {...args} className="space-y-2">
-    <Button {...args}>Button</Button>
-
-    <Button {...args} LeadingIcon={<FiStar />}>
-      Button
-    </Button>
-
-    <Button {...args} TrailingIcon={<FiStar />}>
-      Button
-    </Button>
-
-    <Button {...args} IconOnly={<FiStar />} />
-  </StoryLayout>
-);
-
-export const Default = StoryButton.bind({});
-
-Default.args = {
+export const Basic = Template.bind({});
+Basic.args = {
+  children: 'Button',
   variant: 'primary',
-  size: 'md',
-  darkMode: false,
-  disabled: false,
-  loading: false,
+  size: 'regular',
 };
 
-Default.parameters = {
-  controls: { exclude: ['LeadingIcon', 'TrailingIcon', 'IconOnly'] },
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  children: 'Icon',
+  variant: 'primary',
+  iconLeft: FiStar,
+  iconRight: FiStar,
 };

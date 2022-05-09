@@ -1,163 +1,196 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/jsx-pascal-case */
-import React, { FC, ButtonHTMLAttributes } from 'react';
-import cn from 'classnames';
-import { FaSpinner } from 'react-icons/fa';
+/* eslint-disable react/prop-types */
+import classNames from 'classnames';
+import React, { ReactNode, useContext } from 'react';
+import { ThemeContext } from '@/context/ThemeContext';
 
-type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'secondaryGray'
-  | 'tertiary'
-  | 'tertiaryGray';
+type IconType =
+  | string
+  | React.FunctionComponent<{ className: string; 'aria-hidden': boolean }>
+  | React.ComponentClass<{ className: string; 'aria-hidden': boolean }>;
 
-type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-type ButtonState = 'default' | 'hover' | 'focus' | 'disabled';
-
-const ButtonVariantClasses: Record<
-  ButtonVariant,
-  Record<ButtonState, string>
-> = {
-  primary: {
-    default: 'btn-primary',
-    hover: 'btn-primary-hover',
-    focus: 'btn-primary-focus shadow-grayDark',
-    disabled: 'btn-primary-disabled',
-  },
-
-  secondary: {
-    default: 'btn-secondary',
-    hover: 'btn-secondary-hover',
-    focus: 'btn-secondary-focus shadow-grayDark',
-    disabled: 'btn-secondary-disabled',
-  },
-  secondaryGray: {
-    default: 'btn-secondaryGray',
-    hover: 'btn-secondaryGray-hover',
-    focus: 'btn-secondaryGray-focus shadow-grayDark',
-    disabled: 'btn-secondaryGray-disabled',
-  },
-  tertiary: {
-    default: 'btn-tertiary',
-    hover: 'btn-tertiary-hover',
-    focus: '',
-    disabled: 'btn-tertiary-disabled',
-  },
-  tertiaryGray: {
-    default: 'btn-tertiaryGray',
-    hover: 'btn-tertiaryGray-hover',
-    focus: '',
-    disabled: 'btn-tertiaryGray-disabled',
-  },
-};
-
-const ButtonSizeClasses: Record<ButtonSize, `btn-${ButtonSize}`> = {
-  sm: 'btn-sm',
-  md: 'btn-md',
-  lg: 'btn-lg',
-  xl: 'btn-xl',
-  '2xl': 'btn-2xl',
-};
-
-const ButtonIconSizeClasses: Record<ButtonSize, `btn-icon-${ButtonSize}`> = {
-  sm: 'btn-icon-sm',
-  md: 'btn-icon-md',
-  lg: 'btn-icon-lg',
-  xl: 'btn-icon-xl',
-  '2xl': 'btn-icon-2xl',
-};
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  variant: ButtonVariant;
-  size?: ButtonSize;
-  LeadingIcon?: React.ReactElement;
-  TrailingIcon?: React.ReactElement;
-  IconOnly?: React.ReactElement;
+export interface Props {
+  children?: React.ReactNode;
+  /**
+   * Defines if the button is disabled
+   */
   disabled?: boolean;
-  loading?: boolean;
+  /**
+   * The size of the button
+   */
+  size?: 'larger' | 'large' | 'regular' | 'small' | 'pagination';
+  /**
+   * Shows only one icon inside the button; defaults to left
+   */
+  icon?: IconType;
+  /**
+   * Shows an icon inside the button, left aligned
+   */
+  iconLeft?: IconType;
+  /**
+   * Shows an icon inside the button, right aligned
+   */
+  iconRight?: IconType;
+  /**
+   * The style of the button
+   */
+  variant?: 'outline' | 'link' | 'primary' | '__dropdownItem';
+  /**
+   * Shows the button as a block (full width)
+   */
+  block?: boolean;
 }
 
-const Loading: FC<any> = (props) => <FaSpinner {...props} />;
+export interface ButtonAsButtonProps
+  extends Props,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * The element that should be rendered as a button
+   */
+  tag?: 'button';
+  /**
+   * The native HTML button type
+   */
+  type?: 'button' | 'submit' | 'reset';
+}
 
-const Button: FC<ButtonProps> = ({
-  children,
-  className,
-  variant = 'primary',
-  size = 'md',
-  LeadingIcon,
-  TrailingIcon,
-  IconOnly,
-  disabled: disabledProp,
-  loading,
-  ...buttonProps
-}) => {
-  const ButtonVariantClassName = ButtonVariantClasses[variant];
-  const ButtonIconSizeClassName = ButtonIconSizeClasses[size];
+export interface ButtonAsAnchorProps
+  extends Props,
+    React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  tag: 'a';
+}
 
-  let disabled = disabledProp;
-  if (loading) {
-    disabled = true;
-    const Empty = <></>;
+export interface ButtonAsOtherProps
+  extends Props,
+    React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  tag: string;
+}
 
-    if (IconOnly) {
-      IconOnly = Empty;
-    }
+export type ButtonProps =
+  | ButtonAsButtonProps
+  | ButtonAsAnchorProps
+  | ButtonAsOtherProps;
 
-    if (LeadingIcon) {
-      LeadingIcon = Empty;
-    }
+type Ref = ReactNode | HTMLElement | string;
 
-    if (TrailingIcon) {
-      TrailingIcon = Empty;
-    }
+const Button = React.forwardRef<Ref, ButtonProps>((props, ref) => {
+  const {
+    tag = 'button',
+    // Fix https://github.com/estevanmaito/windmill-react-ui/issues/7
+    type = tag === 'button' ? 'button' : undefined,
+    disabled = false,
+    size = 'regular',
+    variant = 'primary',
+    block = false,
+    icon,
+    iconLeft,
+    iconRight,
+    className,
+    children,
+    ...other
+  } = props;
+  const {
+    theme: { button },
+  } = useContext(ThemeContext);
+
+  function hasIcon() {
+    return !!icon || !!iconLeft || !!iconRight;
   }
 
-  const classname = cn('btn-base', className, {
-    [ButtonSizeClasses[size]]: !IconOnly,
-    [cn(ButtonIconSizeClassName, 'justify-center')]: IconOnly,
-    [cn(
-      ButtonVariantClassName.default,
-      ButtonVariantClassName.hover,
-      ButtonVariantClassName.focus
-    )]: !disabled,
-    [cn(ButtonVariantClassName.disabled, 'cursor-not-allowed')]: disabled,
-  });
+  const IconLeft = iconLeft || icon;
+  const IconRight = iconRight;
 
-  return (
-    <button {...buttonProps} type="button" className={classname}>
-      {loading ? (
-        <Loading
-          className={cn('animate-spin', {
-            'mr-2': size !== '2xl' && !IconOnly,
-            'mr-3': size === '2xl' && !IconOnly,
-          })}
-        />
-      ) : null}
-      {LeadingIcon ? (
-        <LeadingIcon.type
-          {...LeadingIcon.props}
-          className={cn({
-            'mr-2': size !== '2xl',
-            'mr-3': size === '2xl',
-          })}
-        />
-      ) : null}
-      {children}
-      {IconOnly ? (
-        <IconOnly.type
-          {...IconOnly.props}
-          className={size === '2xl' ? 24 : 20}
-        />
-      ) : null}
-      {TrailingIcon ? (
-        <TrailingIcon.type
-          {...TrailingIcon.props}
-          className={cn({ 'ml-2': size !== '2xl', 'ml-3': size === '2xl' })}
-        />
-      ) : null}
-    </button>
+  const baseStyle = button.base;
+  const blockStyle = button.block;
+  const sizeStyles = {
+    larger: button.size.larger,
+    large: button.size.large,
+    regular: button.size.regular,
+    small: button.size.small,
+    /**
+     * Only used in Pagination.
+     * Not meant for general use.
+     */
+    pagination: button.size.pagination,
+  };
+  const iconSizeStyles = {
+    larger: button.size.icon.larger,
+    large: button.size.icon.large,
+    regular: button.size.icon.regular,
+    small: button.size.icon.small,
+    pagination: button.size.icon.regular,
+  };
+  const iconStyle = button.icon[size];
+  const layoutStyles = {
+    primary: button.primary.base,
+    outline: button.outline.base,
+    link: button.link.base,
+  };
+  const activeStyles = {
+    primary: button.primary.active,
+    outline: button.outline.active,
+    link: button.link.active,
+  };
+  const disabledStyles = {
+    primary: button.primary.disabled,
+    outline: button.outline.disabled,
+    link: button.link.disabled,
+  };
+
+  /**
+   * Only used in DropdownItem.
+   * Not meant for general use.
+   */
+  const dropdownItemStyle = button.dropdownItem.base;
+
+  const buttonStyles =
+    variant === '__dropdownItem'
+      ? classNames(dropdownItemStyle, className)
+      : classNames(
+          baseStyle,
+          // has icon but no children
+          hasIcon() && !children && iconSizeStyles[size],
+          // has icon and children
+          hasIcon() && children && sizeStyles[size],
+          // does not have icon
+          !hasIcon() && sizeStyles[size],
+          layoutStyles[variant],
+          disabled ? disabledStyles[variant] : activeStyles[variant],
+          block ? blockStyle : null,
+          className
+        );
+
+  const iconLeftStyles = classNames(
+    iconStyle,
+    children ? button.icon.left : ''
   );
-};
+  const iconRightStyles = classNames(
+    iconStyle,
+    children ? button.icon.right : ''
+  );
+
+  return React.createElement(
+    tag,
+    {
+      className: buttonStyles,
+      ref,
+      disabled,
+      type,
+      ...other,
+    },
+    IconLeft
+      ? React.createElement(IconLeft, {
+          className: iconLeftStyles,
+          'aria-hidden': true,
+        })
+      : null,
+    children,
+    IconRight
+      ? React.createElement(IconRight, {
+          className: iconRightStyles,
+          'aria-hidden': true,
+        })
+      : null
+  );
+});
 
 export default Button;
