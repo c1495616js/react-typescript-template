@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
 import classNames from 'classnames';
 import React, { ReactNode, useContext } from 'react';
+import { FaSpinner } from 'react-icons/fa';
+
 import { ThemeContext } from '@/context/ThemeContext';
+
+const Loading: React.FC<any> = (props) => <FaSpinner {...props} />;
 
 type IconType =
   | string
@@ -38,6 +42,8 @@ export interface Props {
    * Shows the button as a block (full width)
    */
   block?: boolean;
+
+  loading?: boolean;
 }
 
 export interface ButtonAsButtonProps
@@ -86,6 +92,7 @@ const Button = React.forwardRef<Ref, ButtonProps>((props, ref) => {
     iconRight,
     className,
     children,
+    loading = false,
     ...other
   } = props;
   const {
@@ -94,6 +101,10 @@ const Button = React.forwardRef<Ref, ButtonProps>((props, ref) => {
 
   function hasIcon() {
     return !!icon || !!iconLeft || !!iconRight;
+  }
+
+  function isDisabled() {
+    return loading || disabled;
   }
 
   const IconLeft = iconLeft || icon;
@@ -154,7 +165,7 @@ const Button = React.forwardRef<Ref, ButtonProps>((props, ref) => {
           // does not have icon
           !hasIcon() && sizeStyles[size],
           layoutStyles[variant],
-          disabled ? disabledStyles[variant] : activeStyles[variant],
+          isDisabled() ? disabledStyles[variant] : activeStyles[variant],
           block ? blockStyle : null,
           className
         );
@@ -173,10 +184,16 @@ const Button = React.forwardRef<Ref, ButtonProps>((props, ref) => {
     {
       className: buttonStyles,
       ref,
-      disabled,
+      disabled: isDisabled(),
       type,
       ...other,
     },
+    loading
+      ? React.createElement(Loading, {
+          className: `animate-spin ${iconLeftStyles}`,
+          'aria-hidden': true,
+        })
+      : null,
     IconLeft
       ? React.createElement(IconLeft, {
           className: iconLeftStyles,

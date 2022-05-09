@@ -29,6 +29,6 @@ export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: 'Icon',
   variant: 'primary',
-  iconLeft: FiStar,
   iconRight: FiStar,
+  loading: true,
 };
