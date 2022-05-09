@@ -26,6 +26,7 @@ export const useDarkMode = (
   useEffect(() => {
     if (mode) {
       window.localStorage.setItem('theme', mode);
+      document.documentElement.className = '';
       document.documentElement.classList.add(mode);
     }
   }, [mode]);

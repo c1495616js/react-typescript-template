@@ -106,6 +106,7 @@
     "react-refresh": "^0.9.0",
     "serve": "^13.0.2",
     "storybook-addon-designs": "^6.2.1",
+    "storybook-dark-mode": "^1.1.0",
     "stream-browserify": "^3.0.0",
     "style-loader": "^2.0.0",
     "tailwind-config-viewer": "^1.6.2",

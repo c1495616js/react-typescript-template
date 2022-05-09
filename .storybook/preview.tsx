@@ -1,16 +1,19 @@
+import React from 'react';
+import { useDarkMode as useStoryDarkMode } from 'storybook-dark-mode';
+
 import '../src/styles/tailwind.css';
 import Wrapper from '../src/components/base/wrapper/Wrapper';
 
 export const decorators = [
-  (Story) => (
-    <div>
-      <Wrapper>
-        <div className="story-demo">
-          <Story />
-        </div>
+  (Story) => {
+    const mode = useStoryDarkMode();
+
+    return (
+      <Wrapper usePreferences dark={mode}>
+        <Story />
       </Wrapper>
-    </div>
-  ),
+    );
+  },
 ];
 
 export const parameters = {

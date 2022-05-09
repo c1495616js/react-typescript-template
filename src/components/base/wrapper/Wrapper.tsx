@@ -36,7 +36,8 @@ const Wrapper: React.FC<Props> = ({
       if (setMode != null) {
         setMode('dark');
       }
-      document.documentElement.classList.add(`dark`);
+    } else if (setMode != null) {
+      setMode('light');
     }
   }, [dark]);
 
