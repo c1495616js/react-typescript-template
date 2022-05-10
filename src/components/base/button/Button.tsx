@@ -5,11 +5,15 @@ import { FaSpinner } from 'react-icons/fa';
 
 import { ThemeContext } from '@/context/ThemeContext';
 
-const Loading: React.FC<any> = (props) => <FaSpinner {...props} />;
+const Loading: React.FC<React.PropsWithChildren<any>> = (props) => (
+  <FaSpinner {...props} />
+);
 
 type IconType =
   | string
-  | React.FunctionComponent<{ className: string; 'aria-hidden': boolean }>
+  | React.FunctionComponent<
+      React.PropsWithChildren<{ className: string; 'aria-hidden': boolean }>
+    >
   | React.ComponentClass<{ className: string; 'aria-hidden': boolean }>;
 
 export interface Props {

@@ -24,7 +24,9 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
 
 type IconProps = SVGAttributes<SVGElement>;
 
-export const InfoIcon: React.FC<IconProps> = (props) => (
+export const InfoIcon: React.FC<React.PropsWithChildren<IconProps>> = (
+  props
+) => (
   <svg
     {...props}
     fill="none"
@@ -38,7 +40,9 @@ export const InfoIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
-export const WarningIcon: React.FC<IconProps> = (props) => (
+export const WarningIcon: React.FC<React.PropsWithChildren<IconProps>> = (
+  props
+) => (
   <svg
     {...props}
     fill="none"
@@ -52,7 +56,9 @@ export const WarningIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
-export const DangerIcon: React.FC<IconProps> = (props) => (
+export const DangerIcon: React.FC<React.PropsWithChildren<IconProps>> = (
+  props
+) => (
   <svg
     {...props}
     fill="none"
@@ -66,7 +72,9 @@ export const DangerIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
-export const SuccessIcon: React.FC<IconProps> = (props) => (
+export const SuccessIcon: React.FC<React.PropsWithChildren<IconProps>> = (
+  props
+) => (
   <svg
     {...props}
     fill="none"
@@ -80,7 +88,9 @@ export const SuccessIcon: React.FC<IconProps> = (props) => (
   </svg>
 );
 
-export const NeutralIcon: React.FC<IconProps> = (props) => (
+export const NeutralIcon: React.FC<React.PropsWithChildren<IconProps>> = (
+  props
+) => (
   <svg
     {...props}
     fill="none"

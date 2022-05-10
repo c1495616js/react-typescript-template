@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { FC } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 
 /** providers */
@@ -10,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import '@/styles/tailwind.css';
 import reportWebVitals from './reportWebVitals';
 
-const Index: FC = ({ children }) => (
+const Index: FC<React.PropsWithChildren<unknown>> = ({ children }) => (
   <React.StrictMode>
     <ReactQueryProvider>
       {children}
@@ -19,11 +20,13 @@ const Index: FC = ({ children }) => (
   </React.StrictMode>
 );
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container!);
+
+root.render(
   <Index>
     <App />
-  </Index>,
-  document.getElementById('root')
+  </Index>
 );
 
 // If you want your app to work offline and load faster, you can change

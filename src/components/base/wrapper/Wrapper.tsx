@@ -22,7 +22,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   usePreferences?: boolean;
 }
 
-const Wrapper: React.FC<Props> = ({
+const Wrapper: React.FC<React.PropsWithChildren<Props>> = ({
   children,
   theme: customTheme,
   dark,

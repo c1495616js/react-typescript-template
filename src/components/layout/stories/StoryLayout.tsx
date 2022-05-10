@@ -11,7 +11,10 @@ interface IStoryArgs {
   mode: Mode;
 }
 
-const StoryLayout: React.FC<IStoryArgs> = ({ mode, children }) => {
+const StoryLayout: React.FC<React.PropsWithChildren<IStoryArgs>> = ({
+  mode,
+  children,
+}) => {
   const [, setMode] = useDarkMode(true);
   useEffect(() => {
     if (mode && setMode) {
