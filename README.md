@@ -19,7 +19,7 @@
 
 #### Features:
 
-- ⚛️ React 17
+- ⚛️ React 18
 - ⛑️ Type safety via TypeScript
 - 🔐 Private, public, and shared routes
 - 💄 Write SCSS & future CSS with PostCSS + preset-env
@@ -60,10 +60,6 @@ npm run start
 | npm run lint        | Runs Prettier, ESLint, and StyleLint formatters               |
 
 ## Design System
-
-- colors:
-  Making the change in the `tailwind.config.js`
-  https://daisyui.com/core/colors
 
 - icon:
   https://heroicons.com/
