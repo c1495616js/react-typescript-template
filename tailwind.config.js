@@ -19,5 +19,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('tailwindcss-breakpoints-inspector'),
+    require('@tailwindcss/forms'),
   ],
 };
